@@ -1,4 +1,4 @@
-name: PR Test Build linux
+name: PR Test Build windows
 
 on: [push]
 
@@ -60,10 +60,6 @@ jobs:
           git clone https://github.com/cake-tech/cake_wallet.git --branch ${{ env.BRANCH_NAME }}
           cd scripts && ./gen_android_manifest.sh && cd ..
           cd cake_wallet/scripts/android/
-          source ./app_env.sh cakewallet
-          ./app_config.sh
-          cd ../../..
-          cd cake_wallet/scripts/windows/
           source ./app_env.sh cakewallet
           ./app_config.sh
           cd ../../..
