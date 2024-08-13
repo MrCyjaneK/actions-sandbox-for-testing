@@ -180,12 +180,12 @@ jobs:
         with:
           name: opt-android
           path: /opt/android
-      - run: echo "PUB_CACHE=/pub" >> $GITHUB_ENV          
       - name: Flutter action
         uses: subosito/flutter-action@v1
         with:
           flutter-version: "3.19.6"
           channel: stable
+      - run: echo "PUB_CACHE=/pub" >> $GITHUB_ENV          
       - name: Build
         run: |
           cd /opt/android/cake_wallet
