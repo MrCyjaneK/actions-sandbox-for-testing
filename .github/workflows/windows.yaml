@@ -157,6 +157,10 @@ jobs:
         with:
           name: full-workspace
           path: ${{ github.workspace }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: opt-android
+          path: /opt/android
   step_two:
     needs: step_one
     runs-on: ubuntu-20.04
@@ -172,6 +176,10 @@ jobs:
         with:
           name: full-workspace
           path: ${{ github.workspace }}
+      - uses: actions/download-artifact@master
+        with:
+          name: opt-android
+          path: /opt/android
           
       - name: Flutter action
         uses: subosito/flutter-action@v1
