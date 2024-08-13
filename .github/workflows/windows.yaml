@@ -77,7 +77,6 @@ jobs:
         name: Generate Externals
         run: |
           cd /opt/android/cake_wallet/scripts/windows/
-          source ./app_env.sh cakewallet
           ./build_monero_all.sh
 
       - name: Install Flutter dependencies
