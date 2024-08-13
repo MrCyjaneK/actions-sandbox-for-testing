@@ -163,7 +163,7 @@ jobs:
           path: /opt/android
   step_two:
     needs: step_one
-    runs-on: ubuntu-20.04
+    runs-on: windows-latest
     env:
       STORE_PASS: test@cake_wallet
       KEY_PASS: test@cake_wallet
