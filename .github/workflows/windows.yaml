@@ -180,7 +180,7 @@ jobs:
         with:
           name: opt-android
           path: /opt/android
-          
+      - run: echo "PUB_CACHE=/pub" >> $GITHUB_ENV          
       - name: Flutter action
         uses: subosito/flutter-action@v1
         with:
