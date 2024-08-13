@@ -78,6 +78,10 @@ jobs:
         run: |
           cd /opt/android/cake_wallet/scripts/windows/
           ./build_all.sh
+          rm -rf ../monero_c/monero
+          rm -rf ../monero_c/wownero
+          rm -rf ../monero_c/.git
+          rm -rf ../monero_c/external
 
       - name: Install Flutter dependencies
         run: |
@@ -149,6 +153,10 @@ jobs:
           echo "const nanoNowNodesApiKey = '';" >> cw_nano/lib/.secrets.g.dart
           echo "const tronGridApiKey = '';" >> cw_tron/lib/.secrets.g.dart
           echo "const tronNowNodesApiKey = '';" >> cw_tron/lib/.secrets.g.dart
+      - uses: actions/upload-artifact@v4
+        with:
+          name: full-workspace
+          path: ${{ github.workspace }}
   step_two:
     needs: step_one
     runs-on: ubuntu-20.04
@@ -160,6 +168,11 @@ jobs:
 
       - name: temp
         run: echo "BRANCH_NAME=main" >> $GITHUB_ENV
+      - uses: actions/download-artifact@master
+        with:
+          name: full-workspace
+          path: ${{ github.workspace }}
+          
       - name: Flutter action
         uses: subosito/flutter-action@v1
         with:
