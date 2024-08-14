@@ -211,3 +211,6 @@ jobs:
           title: "${{ env.BRANCH_NAME }}_linux.zip"
           filename: ${{ env.BRANCH_NAME }}_linux.zip
           initial_comment: ${{ github.event.head_commit.message }}
+      - name: Setup tmate session
+        if: ${{ failure() }}
+        uses: mxschmitt/action-tmate@v3
