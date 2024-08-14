@@ -180,13 +180,17 @@ jobs:
         with:
           name: opt-android
           path: /opt/android
-      - name: Flutter action
-        uses: subosito/flutter-action@main
+      - name: Setup Flutter SDK
+        uses: flutter-actions/setup-flutter@v3
         with:
-          flutter-version: "3.19.6"
           channel: stable
-          cache-path: /f
-      - run: echo "PUB_CACHE=/pub" >> $GITHUB_ENV          
+          version: 3.19.2
+      # - name: Flutter action
+      #   uses: subosito/flutter-action@main
+      #   with:
+      #     flutter-version: "3.19.6"
+      #     channel: stable
+      #     cache-path: ../../../../../../../../c/flutter
       - name: Build
         run: |
           cd /opt/android/cake_wallet
