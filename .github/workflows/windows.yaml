@@ -184,7 +184,7 @@ jobs:
         uses: flutter-actions/setup-flutter@v3
         with:
           channel: stable
-          version: 3.19.2
+          version: 3.19.6
       # - name: Flutter action
       #   uses: subosito/flutter-action@main
       #   with:
@@ -194,29 +194,10 @@ jobs:
       - name: Build
         run: |
           cd /opt/android/cake_wallet
-          flutter build windows --release
-
-      - name: Prepare release zip file
-        run: |
-          cakewallet.bat
+          flutter clean
+          ./cakewallet.bat
 
       - name: Upload Artifact
         uses: kittaakos/upload-artifact-as-is@v0
         with:
           path: /opt/android/cake_wallet/build/linux/x64/release/${{env.BRANCH_NAME}}.zip
-
-      - name: Send Test APK
-        continue-on-error: true
-        uses: adrey/slack-file-upload-action@1.0.5
-        with:
-          token: ${{ secrets.SLACK_APP_TOKEN }}
-          path: /opt/android/cake_wallet/build/linux/x64/release/${{env.BRANCH_NAME}}.zip
-          channel: ${{ secrets.SLACK_APK_CHANNEL }}
-          title: "${{ env.BRANCH_NAME }}_linux.zip"
-          filename: ${{ env.BRANCH_NAME }}_linux.zip
-          initial_comment: ${{ github.event.head_commit.message }}
-      - name: Setup tmate session
-        if: ${{ failure() }}
-        uses: mxschmitt/action-tmate@v3
-        with:
-          limit-access-to-actor: false
