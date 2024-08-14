@@ -181,7 +181,7 @@ jobs:
           name: opt-android
           path: /opt/android
       - name: Flutter action
-        uses: subosito/flutter-action@v1
+        uses: subosito/flutter-action@master
         with:
           flutter-version: "3.19.6"
           channel: stable
