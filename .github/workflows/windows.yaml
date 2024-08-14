@@ -185,6 +185,7 @@ jobs:
         with:
           flutter-version: "3.19.6"
           channel: stable
+          cache-path: /f
       - run: echo "PUB_CACHE=/pub" >> $GITHUB_ENV          
       - name: Build
         run: |
